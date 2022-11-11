@@ -6,9 +6,9 @@ using UnityEngine.UIElements;
 public class moveRocket : MonoBehaviour
 {
     Transform target;
-    public float forwardSpeed = 0.1f;
-    public int rightTurnSpeed = 2;
-    public int leftTurnSpeed = 2;
+    public float forwardSpeed = 7;
+    public int rightTurnSpeed = 180;
+    public int leftTurnSpeed = 180;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +28,7 @@ public class moveRocket : MonoBehaviour
         }
         if (Input.GetKey("space"))
         {
-                transform.Translate(0, forwardSpeed, 0);
+                transform.Translate(0, forwardSpeed * Time.deltaTime, 0);
         }
         else
         {
@@ -38,22 +38,22 @@ public class moveRocket : MonoBehaviour
         {
             if (leftTurnSpeed > 0)
             {
-                transform.Rotate(new Vector3(0, 0, leftTurnSpeed));
+                transform.Rotate(new Vector3(0, 0, leftTurnSpeed*Time.deltaTime));
             }
             else
             {
-                transform.Rotate(new Vector3(0, 0, -leftTurnSpeed));
+                transform.Rotate(new Vector3(0, 0, -leftTurnSpeed * Time.deltaTime));
             }
         }
         if (Input.GetKey("right"))
         {
             if (rightTurnSpeed > 0)
             {
-                transform.Rotate(new Vector3(0, 0, -rightTurnSpeed));
+                transform.Rotate(new Vector3(0, 0, -rightTurnSpeed * Time.deltaTime));
             }
             else
             {
-                transform.Rotate(new Vector3(0, 0, rightTurnSpeed));
+                transform.Rotate(new Vector3(0, 0, rightTurnSpeed * Time.deltaTime));
             }
         }
     }
